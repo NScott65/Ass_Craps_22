@@ -7,7 +7,7 @@ public class Main {
 
 
 
-        int sum1 = 0;
+        int sum1;
         int sum2;
         boolean done = false;
         boolean done2 = false;
@@ -19,45 +19,42 @@ public class Main {
         System.out.println("Rule 2: If the sum is 7 or 11 it is called a \"natural\" and the game is over with a win.");
         System.out.println("Rule 3: For all other values, the sum becomes \"the point\" and the user makes subsequent rolls \nuntil they either roll a 7, in which case they lose, or they roll the point sum in which case they win.");
 
-        do{
-        do {
-            int dR2 = (int)(Math.random() * 6) + 1;
-            int dR1 = (int)(Math.random() * 6) + 1;
-            plays++;
-            System.out.println("Roll 1: " + dR1);
-            System.out.println("Roll 2: " + dR2);
-            if(plays == 1) {
+
+            do {
+                int dR2 = (int)(Math.random() * 6) + 1;
+                int dR1 = (int)(Math.random() * 6) + 1;
+                plays++;
+                System.out.println("Roll 1: " + dR1);
+                System.out.println("Roll 2: " + dR2);
                 sum1 = dR1 + dR2;
-            }else{
-                sum2 = dR1 + dR2;
-            }
-            System.out.println("Sum: " + sum1);
 
-            if (sum1 == 2 || sum1 == 3 || sum1 == 12 && plays > 1) {
-                System.out.println("Sorry, you crapped out.");
-                System.out.println("Try Again?[Y/N]");
-                if (scan.hasNextLine()) {
-                    n = scan.nextLine();
-                    if (n.equalsIgnoreCase("N")) {
-                        System.exit(0);
+                System.out.println("Sum: " + sum1);
+
+                if (sum1 == 2 || sum1 == 3 || sum1 == 12) {
+                    System.out.println("Sorry, you crapped out.");
+                    System.out.println("Try Again?[Y/N]");
+                    if (scan.hasNextLine()) {
+                        n = scan.nextLine();
+                        if (n.equalsIgnoreCase("N")) {
+                            System.exit(0);
+                        }
                     }
-                }
-            }else if(sum1 == 7 || sum1 == 11){
-                System.out.println("You have won!");
-                System.out.println("Try Again?[Y/N]");
-                if (scan.hasNextLine()) {
-                    n = scan.nextLine();
-                    if (n.equalsIgnoreCase("N")) {
-                        System.exit(0);
+                }else if(sum1 == 7 || sum1 == 11){
+                    System.out.println("You have won!");
+                    System.out.println("Try Again?[Y/N]");
+                    if (scan.hasNextLine()) {
+                        n = scan.nextLine();
+                        if (n.equalsIgnoreCase("N")) {
+                            System.exit(0);
+                        }
                     }
+                }else{
+                    System.out.println("Reroll. You need a " + sum1 + " to win. A 7 will make you lose.");
+                    done = true;
                 }
-            }else{
-                done = true;
-            }
-        }while(!done);
+            }while(!done);
 
-
-            System.out.println("Reroll. You need a " + sum1 + " to win. A 7 will make you lose.");
+        do{
             int dR3 = (int)(Math.random() * 6) + 1;
             int dR4 = (int)(Math.random() * 6) + 1;
             plays++;
